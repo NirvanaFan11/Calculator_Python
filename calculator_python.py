@@ -1,10 +1,10 @@
 import tkinter as tk
 
-calculation = '' 
+calculation = ''
 
 
 def add_to_calculation(symbol):
-    global calcutation
+    global calculation
     calculation += str(symbol)
     text_result.delete(1.0 , 'end')
     text_result.insert(1.0 , calculation)
@@ -14,9 +14,9 @@ def evaluate_calcilation():
     global calculation 
     try:
         result = str(eval(calculation))
-        calculation = ''
-        text_result .delete(1.0 , 'end')
-        text_result.insert(1.0 , calculation)
+        calculation = result
+        text_result.delete(1.0 , 'end')
+        text_result.insert(1.0 , result)
         
     except:
         clear_field()
@@ -54,6 +54,21 @@ btn_9 = tk.Button(root , text = '9', command=lambda: add_to_calculation(9), widt
 btn_9.grid(row = 4 , column= 3 )
 btn_0 = tk.Button(root , text = '0', command=lambda: add_to_calculation(0), width = 5 , font=('Arial', 14))
 btn_0.grid(row = 5 , column= 2 )
-
+btn_plus = tk.Button(root , text = '+', command=lambda: add_to_calculation('+'), width = 5 , font=('Arial', 14))
+btn_plus.grid(row = 2 , column= 4 )
+btn_minus = tk.Button(root , text = '-', command=lambda: add_to_calculation('-'), width = 5 , font=('Arial', 14))
+btn_minus.grid(row = 3 , column= 4 )
+btn_mul = tk.Button(root , text = '*', command=lambda: add_to_calculation('*'), width = 5 , font=('Arial', 14))
+btn_mul.grid(row = 4 , column= 4 )
+btn_div = tk.Button(root , text = '/', command=lambda: add_to_calculation('/'), width = 5 , font=('Arial', 14))
+btn_div.grid(row = 5 , column= 4 )
+btn_open = tk.Button(root , text = '(', command=lambda: add_to_calculation('('), width = 5 , font=('Arial', 14))
+btn_open.grid(row = 5 , column= 1 )  
+btn_close = tk.Button(root , text = ')', command=lambda: add_to_calculation(')'), width = 5 , font=('Arial', 14))
+btn_close.grid(row = 5 , column= 3 )  
+btn_clear = tk.Button(root , text = 'C', command=lambda: clear_field(), width = 11 , font=('Arial', 14))
+btn_clear.grid(row = 6 , column= 1 , columnspan = 2 )  
+btn_equals = tk.Button(root , text = '=', command=evaluate_calcilation, width = 11 , font=('Arial', 14))
+btn_equals.grid(row = 6 , column= 3 , columnspan = 2 )  
 root.mainloop()
 
